@@ -278,14 +278,14 @@ Kirigami.ScrollablePage {
 		}
 	}
 
-	property QtObject addDiveAction: Action {
+	property QtObject addDiveAction: Kirigami.Action {
 		iconName: "list-add"
 		onTriggered: {
 			startAddDive()
 		}
 	}
 
-	property QtObject saveAction: Action {
+	property QtObject saveAction: Kirigami.Action {
 		iconName: "document-save"
 		onTriggered: {
 			Qt.inputMethod.hide()
@@ -293,7 +293,7 @@ Kirigami.ScrollablePage {
 		}
 	}
 
-	property QtObject offlineAction: Action {
+	property QtObject offlineAction: Kirigami.Action {
 		iconName: "qrc:/qml/nocloud.svg"
 		onTriggered: {
 			manager.syncToCloud = false

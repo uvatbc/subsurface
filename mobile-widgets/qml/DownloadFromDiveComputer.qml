@@ -16,7 +16,7 @@ Kirigami.Page {
 
 /* this can be done by hitting the back key
 	contextualActions: [
-		Action {
+		Kirigami.Action {
 			text: qsTr("Close Preferences")
 			iconName: "dialog-cancel"
 			onTriggered: {

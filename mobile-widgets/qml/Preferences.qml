@@ -10,7 +10,7 @@ Kirigami.Page {
 
 	title: qsTr("Preferences")
 	actions {
-		main: Action {
+		main: Kirigami.Action {
 			text: qsTr("Save")
 			iconName: "document-save"
 			onTriggered: {

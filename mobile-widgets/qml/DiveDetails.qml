@@ -67,7 +67,7 @@ Kirigami.Page {
 
 	]
 
-	property QtObject deleteAction: Action {
+	property QtObject deleteAction: Kirigami.Action {
 		text: qsTr("Delete dive")
 		iconName: "trash-empty"
 		onTriggered: {
@@ -84,7 +84,7 @@ Kirigami.Page {
 		}
 	}
 
-	property QtObject mapAction: Action {
+	property QtObject mapAction: Kirigami.Action {
 		text: qsTr("Show on map")
 		iconName: "gps"
 		onTriggered: {
@@ -92,7 +92,7 @@ Kirigami.Page {
 		}
 	}
 
-	actions.main: Action {
+	actions.main: Kirigami.Action {
 		iconName: state !== "view" ? "document-save" : "document-edit"
 		onTriggered: {
             manager.appendTextToLog("save/edit button triggered")
