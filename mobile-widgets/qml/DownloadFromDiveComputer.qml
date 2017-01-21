@@ -67,6 +67,7 @@ Kirigami.Page {
 				text: qsTr(" Downloaded dives")
 			}
 		}
+/*
 		TableView {
 			width: parent.width
 			Layout.fillWidth: true  // The tableview should fill
@@ -88,6 +89,7 @@ Kirigami.Page {
 				title: qsTr("Depth")
 			}
 			}
+*/
 		RowLayout {
 			Layout.fillWidth: true
 			SubsurfaceButton {

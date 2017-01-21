@@ -161,13 +161,13 @@ Item {
 			}
 			ComboBox {
 				id: suitBox
-				editable: true
+//				editable: true
 				model: diveDetailsListView.currentItem.modelData.dive.suitList
-				inputMethodHints: Qt.ImhNoPredictiveText
+//				inputMethodHints: Qt.ImhNoPredictiveText
 				Layout.fillWidth: true
-				style: ComboBoxStyle {
-					dropDownButtonWidth: 0
-				}
+//				style: ComboBoxStyle {
+//					dropDownButtonWidth: 0
+//				}
 			}
 
 			Kirigami.Label {
@@ -176,13 +176,13 @@ Item {
 			}
 			ComboBox {
 				id: buddyBox
-				editable: true
+//				editable: true
 				model: diveDetailsListView.currentItem.modelData.dive.buddyList
-				inputMethodHints: Qt.ImhNoPredictiveText
+//				inputMethodHints: Qt.ImhNoPredictiveText
 				Layout.fillWidth: true
-				style: ComboBoxStyle {
-					dropDownButtonWidth: 0
-				}
+//				style: ComboBoxStyle {
+//					dropDownButtonWidth: 0
+//				}
 			}
 
 			Kirigami.Label {
@@ -191,13 +191,13 @@ Item {
 			}
 			ComboBox {
 				id: divemasterBox
-				editable: true
+//				editable: true
 				model: diveDetailsListView.currentItem.modelData.dive.divemasterList
-				inputMethodHints: Qt.ImhNoPredictiveText
+//				inputMethodHints: Qt.ImhNoPredictiveText
 				Layout.fillWidth: true
-				style: ComboBoxStyle {
-					dropDownButtonWidth: 0
-				}
+//				style: ComboBoxStyle {
+//					dropDownButtonWidth: 0
+//				}
 			}
 
 			Kirigami.Label {
@@ -216,13 +216,13 @@ Item {
 			}
 			ComboBox {
 				id: cylinderBox
-				editable: true
+//				editable: true
 				model: diveDetailsListView.currentItem.modelData.dive.cylinderList
-				inputMethodHints: Qt.ImhNoPredictiveText
+//				inputMethodHints: Qt.ImhNoPredictiveText
 				Layout.fillWidth: true
-				style: ComboBoxStyle {
-					dropDownButtonWidth: 0
-				}
+//				style: ComboBoxStyle {
+//					dropDownButtonWidth: 0
+//				}
 			}
 
 			Kirigami.Label {
