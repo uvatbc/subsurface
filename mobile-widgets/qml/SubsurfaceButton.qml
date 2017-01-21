@@ -10,10 +10,9 @@ Button {
 	background: Rectangle {
 		border.width: 1
 		radius: height / 3
-		color: control.pressed ? subsurfaceTheme.shadedColor : subsurfaceTheme.accentColor
+		color: pressed ? subsurfaceTheme.shadedColor : subsurfaceTheme.accentColor
 	}
 	contentItem: Text{
-		text: control.text
 		color: subsurfaceTheme.accentTextColor
 		verticalAlignment: Text.AlignVCenter
 		horizontalAlignment: Text.AlignHCenter
