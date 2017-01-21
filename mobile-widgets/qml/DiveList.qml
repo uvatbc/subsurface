@@ -209,7 +209,8 @@ Kirigami.ScrollablePage {
 		}
 	}
 
-	ScrollView {
+	Flickable {
+		ScrollBar.vertical: ScrollBar { }
 		id: startPageWrapper
 		anchors.fill: parent
 		opacity: credentialStatus === QMLManager.NOCLOUD || (credentialStatus === QMLManager.VALID || credentialStatus === QMLManager.VALID_EMAIL) ? 0 : 1

@@ -181,7 +181,8 @@ Kirigami.Page {
 
 	Item {
 		anchors.fill: parent
-		ScrollView {
+		Flickable {
+			ScrollBar.vertical: ScrollBar { }
 			id: diveDetailList
 			anchors.fill: parent
 			ListView {
@@ -198,7 +199,8 @@ Kirigami.Page {
 				onMovementEnded: {
 					currentIndex = indexAt(contentX+1, 1);
 				}
-				delegate: ScrollView {
+				delegate: Flickable {
+					ScrollBar.vertical: ScrollBar { }
 					id: internalScrollView
 					width: diveDetailsListView.width
 					height: diveDetailsListView.height
