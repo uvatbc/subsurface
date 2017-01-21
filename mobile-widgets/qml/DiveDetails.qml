@@ -51,7 +51,7 @@ Kirigami.Page {
 					left: diveDetailsListView.currentItem.modelData.dive.gps !== "" ? mapAction : null
 				}
 			}
-			PropertyChanges { target: detailsEditScroll; opened: false }
+			PropertyChanges { target: detailsEditScroll; sheetOpen: false }
 			PropertyChanges { target: pageStack.contentItem; interactive: true }
 		},
 		State {
@@ -95,7 +95,7 @@ Kirigami.Page {
 	actions.main: Kirigami.Action {
 		iconName: state !== "view" ? "document-save" : "document-edit"
 		onTriggered: {
-            manager.appendTextToLog("save/edit button triggered")
+	    manager.appendTextToLog("save/edit button triggered")
 			if (state === "edit" || state === "add") {
 				detailsEdit.saveData()
 			} else {
@@ -221,7 +221,7 @@ Kirigami.Page {
 			id: detailsEditScroll
 			// anchors.fill: parent
 			onSheetOpenChanged: {
-				if (!opened) {
+				if (!sheetOpen) {
 					endEditMode()
 				}
 			}
