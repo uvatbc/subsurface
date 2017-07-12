@@ -21,7 +21,7 @@
 #
 # Or just set QT5_ANDROID, ANDROID_SDK_ROOT and ANDROID_NDK_ROOT to where ever you have them.
 #
-set -eu
+set -xeu
 PLATFORM=$(uname)
 # (trick to get the absolute path, either if we're called with a
 # absolute path or a relative path)
@@ -413,6 +413,25 @@ else
 fi
 
 PKGCONF=$(which pkg-config)
+
+# This hack is to make Qt compile correctly.
+# The cmake file at qt-android-cmake/toolchain/android.toolchain.cmake has a check for
+# the Android API level at line 306: "__DETECT_NATIVE_API_LEVEL"
+# This macro looks for "#define __ANDROID_API__ 16" in ndk-arm/sysroot/usr/include/android/api-level.h
+# In the standalone ndk-arm that is created in this build script, the only macro defined is of the form
+# "#define __ANDROID_API__ __ANDROID_API_FUTURE__"
+# This works perfectly well when included in c/cpp code. However, the cmake macro in the Qt
+# build script will never be able to work correctly.
+#
+# I don't understand how Qt for android has ever compiled correctly without it
+
+# Make a copy of the original api-level.h file first
+cp $ANDROID_STANDALONE_TOOLCHAIN/sysroot/usr/include/android/api-level.h $ANDROID_STANDALONE_TOOLCHAIN/sysroot/usr/include/android/api-level.h.orig
+echo `grep -c "^#define[\t ]\+__ANDROID_API__[\t ]\+[0-9]\+$" roid/api-level.h`
+grep -v "^#define[\t ]\+__ANDROID_API__[\t ]\+[0-9]\+$" $ANDROID_STANDALONE_TOOLCHAIN/sysroot/usr/include/android/api-level.h > /tmp/api-level.h
+echo "#define __ANDROID_API__ $ANDROID_API" >> /tmp/api-level.h
+mv /tmp/api-level.h $ANDROID_STANDALONE_TOOLCHAIN/sysroot/usr/include/android/api-level.h
+
 cmake $MOBILE_CMAKE \
 	-DPKG_CONFIG_EXECUTABLE="$PKGCONF" \
 	-DQT_ANDROID_SDK_ROOT="$ANDROID_SDK_ROOT" \
@@ -437,6 +456,9 @@ cmake $MOBILE_CMAKE \
 	-D__ANDROID_API__=$ANDROID_API \
 	-DCMAKE_C_FLAGS="-D__ANDROID_API__=$ANDROID_API" \
 	"$SUBSURFACE_SOURCE"
+
+# Restore the api-level.h file before continuing the rest of the build
+cp $ANDROID_STANDALONE_TOOLCHAIN/sysroot/usr/include/android/api-level.h.orig $ANDROID_STANDALONE_TOOLCHAIN/sysroot/usr/include/android/api-level.h
 
 # set up the version number
 
